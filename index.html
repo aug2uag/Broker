@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Broker by aug2uag</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/aug2uag/Broker">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Broker</h1>
+            <h2>IoT broker and POA for outside services.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/aug2uag/Broker/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/aug2uag/Broker/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a id="broker" class="anchor" href="#broker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Broker</h1>
+
+<p>aug2uag © 2015</p>
+
+<blockquote>
+<p>MQTT (Message Queuing Telemetry Transport) is a publish/subscribe messaging protocol for constrained Internet of Things devices and low-bandwidth, high-latency or unreliable networks.</p>
+
+<p>Because MQTT specializes in low-bandwidth, high-latency environments, it is an ideal protocol for machine-to-machine (M2M) communication.</p>
+</blockquote>
+
+<h2>
+<a id="broker-for-iot" class="anchor" href="#broker-for-iot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Broker for IoT</h2>
+
+<ol>
+<li>Validated communications for inter-device management (MQTT)
+
+<ul>
+<li>Redundant device validation</li>
+</ul>
+</li>
+<li>Point of access to and from other services (HTTP)</li>
+</ol>
+
+<h2>
+<a id="to-run-app" class="anchor" href="#to-run-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>To run app</h2>
+
+<ul>
+<li>configure json as below, and save as <code>config.json</code>
+</li>
+</ul>
+
+<div class="highlight highlight-javascript"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>mongodb://$URN<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>db<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>native_parser<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+        },
+        <span class="pl-s"><span class="pl-pds">"</span>server<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>socketOptions<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+                <span class="pl-s"><span class="pl-pds">"</span>keepAlive<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span>
+            }
+        },
+        <span class="pl-s"><span class="pl-pds">"</span>replset<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>socketOptions<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>keepAlive<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span>
+            }
+        }
+    }
+}</pre></div>
+
+<ul>
+<li><p>assign json to environment <code>$ export CONFIGJSON="config.json"</code></p></li>
+<li><p>install deps and run cluster file</p></li>
+</ul>
+
+<pre><code>$ npm install
+$ node index.js
+</code></pre>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/aug2uag">aug2uag</a> can be found on <a href="https://github.com/aug2uag/Broker">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
