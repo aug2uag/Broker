@@ -1,51 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640">
-
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
     <title>Broker by aug2uag</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
-    <a id="forkme_banner" href="https://github.com/aug2uag/Broker">View on GitHub</a>
-    <div class="shell">
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/aug2uag/Broker">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/aug2uag/Broker/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/aug2uag/Broker/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>Broker</h1>
-            <h2>IoT broker and POA for outside services.</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
+    <div class="wrapper">
 
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/aug2uag/Broker/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/aug2uag/Broker/tarball/master" class="tgz"><em>download</em> .TGZ</a>
-        </span>
-      </section>
+      <section>
+        <div id="title">
+          <h1>Broker</h1>
+          <p>IoT broker and POA for outside services.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/aug2uag">aug2uag</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-
-      <span class="banner-fix"></span>
-
-
-      <section id="main_content">
         <h1>
 <a id="broker" class="anchor" href="#broker" aria-hidden="true"><span class="octicon octicon-link"></span></a>Broker</h1>
 
@@ -79,26 +71,33 @@
 </ul>
 
 <div class="highlight highlight-javascript"><pre>{
-    <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>mongodb://$URN<span class="pl-pds">"</span></span>,
-    <span class="pl-s"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s"><span class="pl-pds">"</span>db<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s"><span class="pl-pds">"</span>native_parser<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
-        },
-        <span class="pl-s"><span class="pl-pds">"</span>server<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s"><span class="pl-pds">"</span>socketOptions<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-                <span class="pl-s"><span class="pl-pds">"</span>keepAlive<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span>
-            }
-        },
-        <span class="pl-s"><span class="pl-pds">"</span>replset<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-        <span class="pl-s"><span class="pl-pds">"</span>socketOptions<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
-            <span class="pl-s"><span class="pl-pds">"</span>keepAlive<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span>
-            }
+    <span class="pl-s"><span class="pl-pds">"</span>mongoose<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>mongodb://host.com:$PORT/$DB_NAME<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>db<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+                <span class="pl-s"><span class="pl-pds">"</span>native_parser<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>
+            },
+            <span class="pl-s"><span class="pl-pds">"</span>server<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+                <span class="pl-s"><span class="pl-pds">"</span>socketOptions<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+                    <span class="pl-s"><span class="pl-pds">"</span>connectTimeoutMS<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1000</span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>keepAlive<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span>
+                }
+            },
+            <span class="pl-s"><span class="pl-pds">"</span>replset<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+                <span class="pl-s"><span class="pl-pds">"</span>socketOptions<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+                    <span class="pl-s"><span class="pl-pds">"</span>keepAlive<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>connectTimeoutMS<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1000</span>,
+                },
+            },
+            <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>$USER<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>pass<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>$PASS<span class="pl-pds">"</span></span>
         }
     }
-}</pre></div>
+}
+</pre></div>
 
 <ul>
-<li><p>assign json to environment <code>$ export CONFIGJSON="config.json"</code></p></li>
+<li><p>assign json to environment <code>$ export CONFIGJSON="./config.json"</code></p></li>
 <li><p>install deps and run cluster file</p></li>
 </ul>
 
@@ -107,20 +106,8 @@ $ node index.js
 </code></pre>
       </section>
 
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/aug2uag">aug2uag</a> can be found on <a href="https://github.com/aug2uag/Broker">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
-      </footer>
-
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
