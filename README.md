@@ -30,8 +30,8 @@ aug2uag © 2015
             "replset": {
                 "socketOptions": {
                     "keepAlive": 1,
-                    "connectTimeoutMS": 1000,
-                },
+                    "connectTimeoutMS": 1000
+                }
             },
             "user": "$USER",
             "pass": "$PASS"
