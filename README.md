@@ -41,7 +41,7 @@ aug2uag © 2015
 
 ```
 
-* assign json to environment `$ export CONFIGJSON="./config.json"`
+* assign json to environment `$ export CONFIGJSON="../config.json"`
 
 * install deps and run cluster file
 
