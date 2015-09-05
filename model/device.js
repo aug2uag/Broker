@@ -51,7 +51,7 @@ schema.statics.findByDeviceID = function(deviceID, cb) {
         if (err || !doc || doc.deviceID !== deviceID) return cb(true);
         return cb(null, doc);
     });
-}
+};
 
 schema.statics.topicAuthorized = function(deviceID, topic, cb) {
     mongoose.model('Device').findOne({deviceID: deviceID}, function(err, doc) {
@@ -59,7 +59,7 @@ schema.statics.topicAuthorized = function(deviceID, topic, cb) {
         console.log(_topic)
         cb(err, (topic===_topic));
     });
-}
+};
 
 schema.methods.mqtt = function() {
     return '/' + this.topic + '/' + this.deviceID + '/' + this.app;
