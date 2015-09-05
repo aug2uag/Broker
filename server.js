@@ -15,10 +15,10 @@ var server_port = 8080
   , Device   = require('./model/device').Device;
 var serverDomain = domain.create();
 
-app.use(require('body-parser').json())
+app.use(require('body-parser').json());
 
 app.get('/', function(req, res) {
-    res.json({v: 'MQTT:HTTP v0.0.1'})
+    res.json({v: 'MQTT:HTTP v0.0.1'});
 });
 
 app.post('/updates', function(req, res) {
@@ -51,20 +51,20 @@ var authenticate = function (client, deviceID, password, callback) {
 };
 
 var authorizePublish = function (client, topic, payload, callback) {
-    console.log('authorizePublish', topic)
+    console.log('authorizePublish', topic);
     Device.topicAuthorized(client.deviceID, topic, function(err, truthy) {
         if (err) truthy=false;
         callback(null, truthy);
     });
-}
+};
 
 var authorizeSubscribe = function (client, topic, callback) {
-    console.log('authorizeSubscribe', topic)
+    console.log('authorizeSubscribe', topic);
     Device.topicAuthorized(client.deviceID, topic, function(err, truthy) {
         if (err) truthy=false;
         callback(null, truthy);
     });
-}
+};
 
 function setup() {
     broker.authenticate = authenticate;
@@ -87,7 +87,7 @@ broker.on('clientConnected', function (client) {
 
 broker.on('published', function (packet, client) {
     if (!(packet.topic.match(/\$SYS/))) {
-        console.log('published', packet.topic)
+        console.log('published', packet.topic);
         Device.findByDeviceID(client.deviceID, function(err, doc) {
             if (doc) {
                 doc.pubQueue({
@@ -142,12 +142,12 @@ broker.on('clientDisconnected', function (client) {
 
 serverDomain.run(function () {
     http.createServer(function (req, res) {
-        var reqd = domain.create()
-        reqd.add(req)
-        reqd.add(res)
+        var reqd = domain.create();
+        reqd.add(req);
+        reqd.add(res);
         reqd.on('error', function (error) {
-            console.error('Error', error.code, error.message, req.url, new Date)
-            reqd.dispose()
+            console.error('Error', error.code, error.message, req.url, new Date);
+            reqd.dispose();
         });
         app(req, res);
     }).listen(server_port, function() {
