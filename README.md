@@ -15,27 +15,25 @@ aug2uag © 2015
 
 ```javascript
 {
-    "mongoose": {
-        "url": "mongodb://host.com:$PORT/$DB_NAME",
-        "options": {
-            "db": {
-                "native_parser": true
-            },
-            "server": {
-                "socketOptions": {
-                    "connectTimeoutMS": 1000,
-                    "keepAlive": 1
-                }
-            },
-            "replset": {
-                "socketOptions": {
-                    "keepAlive": 1,
-                    "connectTimeoutMS": 1000
-                }
-            },
-            "user": "$USER",
-            "pass": "$PASS"
-        }
+    "url": "mongodb://host.com:$PORT/$DB_NAME",
+    "options": {
+        "db": {
+            "native_parser": true
+        },
+        "server": {
+            "socketOptions": {
+                "connectTimeoutMS": 1000,
+                "keepAlive": 1
+            }
+        },
+        "replset": {
+            "socketOptions": {
+                "keepAlive": 1,
+                "connectTimeoutMS": 1000
+            }
+        },
+        "user": "$USER",
+        "pass": "$PASS"
     }
 }
 

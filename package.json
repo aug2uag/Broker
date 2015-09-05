@@ -12,7 +12,7 @@
     "mosca": "^0.31.1",
     "request": "^2.61.0"
   },
-  "description": "",
+  "description": "IoT broker with POA for outside services.",
   "engines": {
     "node": "0.12.7"
   },
@@ -21,7 +21,7 @@
     "HTTP",
     "IoT"
   ],
-  "license": "MIT",
+  "license": "Carryover dependencies LICENSE",
   "main": "index.js",
   "name": "Broker",
   "private": false,
