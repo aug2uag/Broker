@@ -38,7 +38,6 @@ app.post('/updates', function(req, res) {
 var authenticate = function (client, deviceID, password, callback) {
     console.log('authenticate', deviceID)
     Device.findByDeviceID(deviceID, function(err, doc) {
-        console.log(err, doc)
         if (err || !doc) {
             callback(null, false);
         } else {
@@ -54,7 +53,6 @@ var authenticate = function (client, deviceID, password, callback) {
 var authorizePublish = function (client, topic, payload, callback) {
     console.log('authorizePublish', topic)
     Device.topicAuthorized(client.deviceID, topic, function(err, truthy) {
-        console.log(err, truthy)
         if (err) truthy=false;
         callback(null, truthy);
     });
@@ -63,7 +61,6 @@ var authorizePublish = function (client, topic, payload, callback) {
 var authorizeSubscribe = function (client, topic, callback) {
     console.log('authorizeSubscribe', topic)
     Device.topicAuthorized(client.deviceID, topic, function(err, truthy) {
-        console.log(err, truthy)
         if (err) truthy=false;
         callback(null, truthy);
     });
@@ -78,15 +75,14 @@ function setup() {
 
 broker.on("error", function (err) {
     console.log(new Date);
-    console.log(err);
+    console.error(err);
 });
 
 broker.on('clientConnected', function (client) {
-    console.log('Client Connected \t:= ', client.id);
-    var obj = {
+    console.log({
         msg: 'client connected',
         date: new Date
-    }
+    });
 });
 
 broker.on('published', function (packet, client) {
@@ -94,23 +90,22 @@ broker.on('published', function (packet, client) {
         console.log('published', packet.topic)
         Device.findByDeviceID(client.deviceID, function(err, doc) {
             if (doc) {
-                packet.body = packet.payload.toString('utf-8');
-                packet.date = new Date;
-                delete packet.payload;
-                doc.lastPublished = doc.lastPublished || [];
-                doc.lastPublished.push(packet);
-                doc.save();
+                doc.pubQueue({
+                    date: new Date,
+                    body: packet.payload.toString('utf-8'),
+                    topic: packet.topic
+                });
             };
         });
     };
 });
 
 broker.on('subscribed', function (topic, client) {
-    var obj = {
+    console.log({
         msg: 'client subscribed',
         topic: topic,
         date: new Date
-    }
+    });
     Device.findByDeviceID(client.deviceID, function(err, doc) {
         if (doc) {
             doc.lastSubscribed = new Date;
@@ -120,10 +115,10 @@ broker.on('subscribed', function (topic, client) {
 });
 
 broker.on('clientDisconnecting', function (client) {
-    var obj = {
+    console.log({
         msg: 'client disconnecting',
         date: new Date
-    }
+    });
     Device.findByDeviceID(client.deviceID, function(err, doc) {
         if (doc) {
             doc.lastDisconnecting = new Date;
@@ -133,10 +128,10 @@ broker.on('clientDisconnecting', function (client) {
 });
 
 broker.on('clientDisconnected', function (client) {
-    var obj = {
+    console.log({
         msg: 'client disconnected',
         date: new Date
-    }
+    });
     Device.findByDeviceID(client.deviceID, function(err, doc) {
         if (doc) {
             doc.lastDisconnected = new Date;
