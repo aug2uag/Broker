@@ -8,19 +8,18 @@ var server_port = 8080
   , mosca    = require('mosca')
   , express  = require('express')
   , app      = express()
-  , bParse   = require('body-parser')
+  , domain   = require('domain')
   , broker   = new mosca.Server({
                  port: 1883
                })
   , Device   = require('./model/device').Device;
-var httpServ = http.createServer(app);
+var serverDomain = domain.create();
 
-app.use(bParse.json())
+app.use(require('body-parser').json())
 
 app.get('/', function(req, res) {
     res.json({v: 'MQTT:HTTP v0.0.1'})
 });
-
 
 app.post('/updates', function(req, res) {
     var document = req.body;
@@ -77,9 +76,8 @@ function setup() {
     console.log('Mosca broker is up and running.');
 };
 
-broker.on('ready', setup);
-
 broker.on("error", function (err) {
+    console.log(new Date);
     console.log(err);
 });
 
@@ -147,6 +145,18 @@ broker.on('clientDisconnected', function (client) {
     });
 });
 
-app.listen(server_port, function() {
-    console.log("MQTT:HTTP listening\nENV=\n",process.env)
+serverDomain.run(function () {
+    http.createServer(function (req, res) {
+        var reqd = domain.create()
+        reqd.add(req)
+        reqd.add(res)
+        reqd.on('error', function (error) {
+            console.error('Error', error.code, error.message, req.url, new Date)
+            reqd.dispose()
+        });
+        app(req, res);
+    }).listen(server_port, function() {
+        console.log("MQTT:HTTP listening")
+        broker.on('ready', setup);
+    });
 });
