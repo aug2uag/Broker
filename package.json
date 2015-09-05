@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "body-parser": "^1.13.3",
+    "domain": "0.0.1",
     "express": "^4.13.3",
     "mongoose": "^4.1.3",
     "mosca": "^0.31.1",
@@ -15,7 +16,11 @@
   "engines": {
     "node": "0.12.7"
   },
-  "keywords": ["MQTT","HTTP","IoT"],
+  "keywords": [
+    "MQTT",
+    "HTTP",
+    "IoT"
+  ],
   "license": "MIT",
   "main": "index.js",
   "name": "Broker",
